@@ -10,12 +10,28 @@ const generateBoard = (size) => {
 }
 function App() {
 const [board,setBoard] = useState(generateBoard(3));
-console.log(board);
 
   return (
     <div>
-      TicTacToe
-    </div>)
+     {board.map((row,r)=>{
+      return (
+        <div key ={r}
+        style={{
+          display:'flex',
+        }}>
+          {row.map((cell,c)=>{
+            return <div key={c} 
+            style={{border: 'solid white 1px',
+            height:'50px', 
+            width:'50px'}}>
+              {cell}</div>
+          })}
+        </div>
+     )}
+      )
+     }
+    </div>
+    )
 
 }
 
