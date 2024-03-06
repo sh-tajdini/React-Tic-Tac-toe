@@ -33,6 +33,19 @@ const rowsToColumn = (board) => {
   } 
   return newBoard;
 }
+const diagonalToRow =(board) =>{
+  const newBoard=[[],[]];
+  let increment = 0;
+  let decrement = board.length -1;
+  while (increment < board.length){
+  newBoard[0].push(board[increment][increment]);
+  newBoard[1].push(board[increment][decrement]);
+  increment++;
+  decrement++;
+  }
+  return newBoard;
+
+}
 const checkForWin = (board) => {
   //horizontal
   if(checkHorizontal(board)){
@@ -43,7 +56,9 @@ if(checkHorizontal(rowsToColumn(board))){
   return true;
 }
   //diagonal
-
+if(checkHorizontal(diagonalToRow(board))){
+  return true;
+}
 }
 const handleClick = (r,c) => {
   board[r][c] = curPlayer;
