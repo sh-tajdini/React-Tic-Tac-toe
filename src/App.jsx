@@ -10,10 +10,12 @@ const generateBoard = (size) => {
 }
 function App() {
 const [board,setBoard] = useState(generateBoard(3));
+const[curPlayer, setCurPlayer] = useState('X');
 
 const handleClick = (r,c) => {
-  board[r][c] = 'X';
+  board[r][c] = curPlayer;
   setBoard([...board]);
+  setCurPlayer(curPlayer === 'X'? 'Y':'X');
 }
   return (
     <div>
