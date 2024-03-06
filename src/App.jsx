@@ -20,13 +20,28 @@ const checkHorizontal = (board) => {
     }
   }
 }
+const rowsToColumn = (board) => {
+  const newBoard = [];
+  let column =0;
+  while (column< board.length){
+    const newRow =[];
+    for (let row= 0; row<board.length; row++){
+      newRow.push(board[row][column]);
+    } 
+    newBoard.push(newRow);
+    column++;
+  } 
+  return newBoard;
+}
 const checkForWin = (board) => {
   //horizontal
   if(checkHorizontal(board)){
     return true;
   }
   //vertical
-
+if(checkHorizontal(rowsToColumn(board))){
+  return true;
+}
   //diagonal
 
 }
