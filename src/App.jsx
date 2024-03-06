@@ -65,8 +65,13 @@ const handleClick = (r,c) => {
   setBoard([...board]);
   if(checkForWin(board)){
     console.log(curPlayer + ' wins');
+    setBoard(generateBoard(3));
+    setCurPlayer('X');
   }
-  setCurPlayer(curPlayer === 'X'? 'Y':'X');
+  else{
+    setCurPlayer(curPlayer === 'X'? 'Y':'X');
+  }
+ 
 }
   return (
     <div>
