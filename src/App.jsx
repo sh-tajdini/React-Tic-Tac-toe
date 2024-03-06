@@ -11,6 +11,10 @@ const generateBoard = (size) => {
 function App() {
 const [board,setBoard] = useState(generateBoard(3));
 
+const handleClick = (r,c) => {
+  board[r][c] = 'X';
+  setBoard([...board]);
+}
   return (
     <div>
      {board.map((row,r)=>{
@@ -20,11 +24,18 @@ const [board,setBoard] = useState(generateBoard(3));
           display:'flex',
         }}>
           {row.map((cell,c)=>{
-            return <div key={c} 
+            return (
+            <div key={c} 
+            onClick={() => handleClick(r,c)}
             style={{border: 'solid white 1px',
             height:'50px', 
-            width:'50px'}}>
-              {cell}</div>
+            width:'50px',
+            display:'flex',
+            justifyContent:'center',
+            alignItems:'center',
+            }}>
+              {cell}
+              </div>);
           })}
         </div>
      )}
